@@ -1,1 +1,3 @@
-print("This is going to be my first streamlit app!!!!")
+import streamlit
+
+steamlit.title("This is the title!")
