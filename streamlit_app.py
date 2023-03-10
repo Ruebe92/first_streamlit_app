@@ -22,8 +22,14 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 streamlit.header("Fruityvice Fruit Advice!")
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response.json())
+fruit = "banana"
+fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit}")
 
+#Normalize json with pandas
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+streamlit.dataframe(fruityvice_normalized)
+
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruit_choice)
 
 ## Food-API-Key: 1dkQOdxq2n1nH09C3cjzexdiGvzOd0UcGmuWlK0T 
