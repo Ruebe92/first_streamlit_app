@@ -62,3 +62,6 @@ try:
 
         fruit = get_fruityvice_data(fruit_choice)
         streamlit.dataframe(fruit)
+
+except URLError as e:
+    streamlit.error()
