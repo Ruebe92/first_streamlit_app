@@ -41,7 +41,7 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST;")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load contains:")
-streamlit.data_frame(my_data_row)s
+streamlit.data_frame(my_data_rows)
 
 
 ## Food-API-Key: 1dkQOdxq2n1nH09C3cjzexdiGvzOd0UcGmuWlK0T 
