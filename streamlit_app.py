@@ -23,11 +23,6 @@ streamlit.dataframe(my_fruit_list)
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
-# Fruitlist from Fruityvice API
-streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-
 def get_fruityvice_data(this_fruit_choice):
 
     fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{this_fruit_choice}")
@@ -49,7 +44,7 @@ try:
 except URLError as e:
     streamlit.error()
 
-# Fruityvice API Response
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST;")
@@ -62,6 +57,6 @@ add_my_fruit = streamlit.text_input('What fruit would you like to add?','Jackfru
 streamlit.write('Thanks for adding ', add_my_fruit)
 
 my_data_rows = my_data_rows.append(add_my_fruit)
-my_cur_execute("insert into freuit_load_list values ('from streamlit')")
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 ## Food-API-Key: 1dkQOdxq2n1nH09C3cjzexdiGvzOd0UcGmuWlK0T 
 
